@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../UI/Button";
 import { Input } from "../UI/Input";
-import "./ExpenseForm.css";
+import styled from "styled-components";
 
 export const ExpensesForm = ({ onClick, addExpenseHandler }) => {
   const [inputText, setInputText] = useState("");
@@ -38,8 +38,8 @@ export const ExpensesForm = ({ onClick, addExpenseHandler }) => {
   }
 
   return (
-    <div className="header">
-      <div className="='input">
+    <Header>
+      <Inputt>
         <div style={{ display: "flex" }}>
           <Input
             type="text"
@@ -71,16 +71,31 @@ export const ExpensesForm = ({ onClick, addExpenseHandler }) => {
             onChange={getNumberInput}
           />
         </div>
-      </div>
+      </Inputt>
 
-      <div className="btn">
+      <Btn className="btn">
         <Button marginRight="20px" onClick={onClick}>
           Отмена
         </Button>
         <Button marginRight="12px" onClick={submitHandler}>
           Добавть расход
         </Button>
-      </div>
-    </div>
+      </Btn>
+    </Header>
   );
 };
+const Inputt = styled.div`
+  display: flex;
+  margin-left: 30px;
+  flex-direction: column;
+`;
+const Btn = styled.div`
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+`;
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

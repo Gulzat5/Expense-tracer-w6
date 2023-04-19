@@ -1,4 +1,4 @@
-import "./EpensesFilter.css";
+import styled from "styled-components";
 
 export const ExpensesFilter = ({
   onChange,
@@ -10,30 +10,54 @@ export const ExpensesFilter = ({
     <div className="FilterContainer">
       <button onClick={descending}> по убыванию</button>
       <button onClick={ascending}> по возрастанию</button>
-      <div className="Filter_label">
-        <label className="LabelContainer" style={{ color: "white" }}>
+      <FilterLabel>
+        <LabelContainer style={{ color: "white" }}>
           Filter by year
-        </label>
-        <select
+        </LabelContainer>
+        <SelectContainer
           className="SelectContainer"
           value={selectedYear}
           onChange={onChange}
           style={{ width: "120px" }}
         >
-          <option style={{ color: "black" }} value="2023">
+          <Option style={{ color: "black" }} value="2023">
             2023
-          </option>
-          <option style={{ color: "black" }} value="2022">
+          </Option>
+          <Option style={{ color: "black" }} value="2022">
             2022
-          </option>
-          <option style={{ color: "black" }} value="2021">
+          </Option>
+          <Option style={{ color: "black" }} value="2021">
             2021
-          </option>
-          <option style={{ color: "black" }} value="2020">
+          </Option>
+          <Option style={{ color: "black" }} value="2020">
             2020
-          </option>
-        </select>
-      </div>
+          </Option>
+        </SelectContainer>
+      </FilterLabel>
     </div>
   );
 };
+const FilterLabel = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const LabelContainer = styled.label`
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+`;
+const SelectContainer = styled.select`
+  display: flex;
+  border-radius: 6px;
+  padding: 10px 15px 10px 20px;
+  gap: 20px;
+  outline: none;
+  font-weight: 600;
+  font-size: 16px;
+`;
+const Option = styled.option`
+  border-radius: 6px;
+  font-size: 18px;
+
+  width: 90px;
+`;

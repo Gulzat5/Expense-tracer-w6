@@ -1,4 +1,5 @@
-import "./Chart.css";
+import styled from "styled-components";
+
 import { ChartBar } from "../ChartBar/ExpenseChartBar";
 export const ExpensesChart = ({ filtredExpenses }) => {
   const months = [
@@ -22,16 +23,21 @@ export const ExpensesChart = ({ filtredExpenses }) => {
   });
 
   return (
-    <div className="chartContainer">
+    <ChartContainer>
       {months.map((el) => {
-        return (
-          <ChartBar
-            key={el.label}
-            label={el.label}
-            currentPrice={el.currentPrice}
-          />
-        );
+        return <ChartBar key={el.label} />;
       })}
-    </div>
+      <ChartBar />
+    </ChartContainer>
   );
 };
+const ChartContainer = styled.div`
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f8dfff;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  height: 10rem;
+  margin: 0px 10px 0px 10px;
+`;

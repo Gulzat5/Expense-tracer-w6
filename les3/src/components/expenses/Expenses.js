@@ -1,8 +1,8 @@
-import "./expenses.css";
 import { useState } from "react";
 import { ExpensesCard } from "./ExpensesCard";
 import { ExpensesFilter } from "../ExpensesFilter/ExpensFilter";
 import { ExpensesChart } from "../Chart/ExpensesChart";
+import styled from "styled-components";
 
 export const Expenses = ({ data, onDelete, setPdoduct }) => {
   const [selectedYear, setSelectYear] = useState("2023");
@@ -32,8 +32,8 @@ export const Expenses = ({ data, onDelete, setPdoduct }) => {
   };
 
   return (
-    <div className="divExp">
-      <div className="ExprensesFilter">
+    <DivExp>
+      <ExprensesFilter className="ExprensesFilter">
         <ExpensesFilter
           getvalue={getSelectValue}
           descending={descending}
@@ -41,10 +41,10 @@ export const Expenses = ({ data, onDelete, setPdoduct }) => {
           value={selectedYear}
           onChange={getSelectValue}
         />
-      </div>
+      </ExprensesFilter>
       <ExpensesChart filtredExpenses={filtredYear} />
 
-      <ul className="ul">
+      <Ul className="ul">
         {filtredYear.map((el) => {
           return (
             <ExpensesCard
@@ -55,7 +55,29 @@ export const Expenses = ({ data, onDelete, setPdoduct }) => {
             />
           );
         })}
-      </ul>
-    </div>
+      </Ul>
+    </DivExp>
   );
 };
+const DivExp = styled.div`
+  margin-top: 60px;
+  background-color: #1f1f1f;
+  width: 740px;
+  border-radius: 1px;
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  gap: 20px;
+`;
+
+const ExprensesFilter = styled.div`
+  padding: 0px 20px 0px 20px;
+`;
+
+const Ul = styled.ul`
+  padding: 40px 20px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
